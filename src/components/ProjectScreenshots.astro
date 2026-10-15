@@ -16,6 +16,8 @@ interface Props {
     nextScreenshot: string;
     goToScreenshot: string;
     screenshotOf: string;
+    enlargeScreenshot: string;
+    closeImagePreview: string;
   };
 }
 
@@ -30,15 +32,17 @@ const position = (index: number) => `${index + 1} ${labels.screenshotOf} ${scree
   <div class="border-b border-line bg-page/40 px-[22px] py-5 max-[600px]:px-[15px]">
     {mode === 'single' ? (
       <figure class="m-0 overflow-hidden border border-line bg-panel">
-        <img
-                class="block aspect-video w-full bg-panel object-contain"
-          src={screenshots[0].path}
-          width={screenshots[0].width}
-          height={screenshots[0].height}
-          alt={screenshots[0].alt[locale]}
-          loading="lazy"
-          decoding="async"
-        />
+        <button class="block w-full cursor-zoom-in bg-panel focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-accent" type="button" data-lightbox-trigger aria-label={`${labels.enlargeScreenshot}: ${screenshots[0].alt[locale]}`}>
+          <img
+            class="block aspect-video w-full bg-panel object-contain"
+            src={screenshots[0].path}
+            width={screenshots[0].width}
+            height={screenshots[0].height}
+            alt={screenshots[0].alt[locale]}
+            loading="lazy"
+            decoding="async"
+          />
+        </button>
       </figure>
     ) : (
       <section
@@ -63,15 +67,17 @@ const position = (index: number) => `${index + 1} ${labels.screenshotOf} ${scree
               aria-roledescription={labels.slideRoleDescription}
               aria-label={position(index)}
             >
-              <img
-                class="block aspect-video w-full bg-panel object-contain"
-                src={screenshot.path}
-                width={screenshot.width}
-                height={screenshot.height}
-                alt={screenshot.alt[locale]}
-                loading="lazy"
-                decoding="async"
-              />
+              <button class="block w-full cursor-zoom-in bg-panel focus-visible:outline-2 focus-visible:outline-offset-[-3px] focus-visible:outline-accent" type="button" data-lightbox-trigger aria-label={`${labels.enlargeScreenshot}: ${screenshot.alt[locale]}`}>
+                <img
+                  class="block aspect-video w-full bg-panel object-contain"
+                  src={screenshot.path}
+                  width={screenshot.width}
+                  height={screenshot.height}
+                  alt={screenshot.alt[locale]}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </button>
             </figure>
           ))}
         </div>
@@ -114,6 +120,42 @@ const position = (index: number) => `${index + 1} ${labels.screenshotOf} ${scree
       </section>
     )}
   </div>
+)}
+
+{mode !== 'none' && (
+  <dialog class="fixed m-auto max-h-[96dvh] max-w-[96vw] overflow-visible border border-line bg-panel p-2 text-ink backdrop:bg-black/85" data-image-lightbox aria-label={labels.projectScreenshots}>
+    <div class="relative">
+      <button class="absolute right-2 top-2 z-10 grid size-10 place-items-center border border-line bg-panel/90 text-2xl leading-none text-ink hover:border-accent focus-visible:outline-2 focus-visible:outline-accent" type="button" data-lightbox-close aria-label={labels.closeImagePreview}>×</button>
+      <img class="block max-h-[92dvh] max-w-[94vw] object-contain" data-lightbox-image alt="" />
+    </div>
+  </dialog>
+)}
+
+{mode !== 'none' && (
+  <script>
+    document.querySelectorAll<HTMLDialogElement>('[data-image-lightbox]').forEach((dialog) => {
+      const preview = dialog.querySelector<HTMLImageElement>('[data-lightbox-image]');
+      const close = dialog.querySelector<HTMLButtonElement>('[data-lightbox-close]');
+      const container = dialog.parentElement;
+      if (!preview || !close || !container) return;
+
+      container.querySelectorAll<HTMLButtonElement>('[data-lightbox-trigger]').forEach((trigger) => {
+        trigger.addEventListener('click', () => {
+          const image = trigger.querySelector<HTMLImageElement>('img');
+          if (!image) return;
+          preview.src = image.currentSrc || image.src;
+          preview.alt = image.alt;
+          dialog.showModal();
+          close.focus();
+        });
+      });
+
+      close.addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', (event) => {
+        if (event.target === dialog) dialog.close();
+      });
+    });
+  </script>
 )}
 
 {mode === 'carousel' && (

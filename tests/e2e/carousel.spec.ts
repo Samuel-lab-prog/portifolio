@@ -19,9 +19,29 @@ test('zero and one screenshot render without unnecessary carousel controls', asy
   await expect(emptyCard.getByText('Conteúdo do card permanece disponível.')).toBeVisible();
 
   const singleCard = page.getByTestId('single-card');
-  await expect(singleCard.locator('img')).toHaveCount(1);
+  await expect(singleCard.locator('figure img')).toHaveCount(1);
   await expect(singleCard.locator('[data-carousel-previous], [data-carousel-next], [data-carousel-indicator]')).toHaveCount(0);
-  await expect(singleCard.locator('img')).toHaveAttribute('alt', 'Captura de teste: Single image');
+  await expect(singleCard.locator('figure img')).toHaveAttribute('alt', 'Captura de teste: Single image');
+});
+
+test('screenshot opens in a large preview and closes accessibly', async ({ page }) => {
+  await page.goto(fixturePath);
+
+  const singleCard = page.getByTestId('single-card');
+  const trigger = singleCard.getByRole('button', { name: 'Ampliar captura: Captura de teste: Single image' });
+  const dialog = singleCard.getByRole('dialog', { name: 'Capturas de tela do projeto' });
+  await trigger.click();
+  await expect(dialog).toBeVisible();
+  await expect(dialog.locator('[data-lightbox-image]')).toHaveAttribute('alt', 'Captura de teste: Single image');
+  await expect(dialog.locator('[data-lightbox-image]')).toHaveAttribute('src', /data:image\/svg\+xml/);
+
+  await page.keyboard.press('Escape');
+  await expect(dialog).toBeHidden();
+  await expect(trigger).toBeFocused();
+
+  await trigger.click();
+  await dialog.getByRole('button', { name: 'Fechar imagem ampliada' }).click();
+  await expect(dialog).toBeHidden();
 });
 
 test('arrows and indicators navigate to the selected screenshot', async ({ page }) => {
@@ -182,7 +202,7 @@ test('real AGIAS screenshots load with localized descriptions in the portfolio',
   for (const locale of ['pt', 'en'] as const) {
     await page.goto(locale === 'pt' ? '/' : '/en/');
     const card = page.locator('#projects article').filter({ hasText: 'AGIAS' }).first();
-    const images = card.locator('img');
+    const images = card.locator('figure img');
     await expect(images).toHaveCount(3);
 
     for (const [index, expected] of screenshots.entries()) {
@@ -208,6 +228,22 @@ test('real AGIAS screenshots load with localized descriptions in the portfolio',
       await card.screenshot({ path: `test-results/visual/agias-project-${device}.png` });
     }
   }
+});
+
+test('project cards keep technology labels compact on narrow screens', async ({ page }) => {
+  await page.setViewportSize({ width: 900, height: 900 });
+  await page.goto('/');
+
+  const cards = page.locator('#projects article');
+  const firstCard = cards.nth(0);
+  const secondCard = cards.nth(1);
+  const firstCardTop = await firstCard.evaluate((element) => element.getBoundingClientRect().top);
+  const secondCardTop = await secondCard.evaluate((element) => element.getBoundingClientRect().top);
+  expect(secondCardTop).toBeGreaterThan(firstCardTop);
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  const technology = firstCard.locator('[aria-label="Tecnologias do projeto"] span').first();
+  await expect(technology).toHaveCSS('white-space', 'nowrap');
 });
 
 test('desktop and mobile layout stays within the viewport and captures visual fixtures', async ({ page }, testInfo) => {
@@ -246,6 +282,7 @@ test('keyboard focus is visible and the fixture has no relevant JavaScript error
   });
   await page.goto(fixturePath);
 
+  await page.keyboard.press('Tab');
   await page.keyboard.press('Tab');
   await page.keyboard.press('Tab');
   await page.keyboard.press('Tab');
