@@ -160,15 +160,15 @@ test('back-to-top button appears after scrolling and returns to the page top', a
   await expect(button).toBeHidden();
 });
 
-test('printable resume remains separate from the project screenshot area', async ({ page }) => {
+test('printable resume remains separate and the print button stays removed', async ({ page }) => {
   await page.goto('/');
-  await expect(page.locator('[data-print]')).toBeDisabled();
+  await expect(page.locator('[data-print]')).toHaveCount(0);
   await page.emulateMedia({ media: 'print' });
 
   const resume = page.locator('.resume-print');
   await expect(resume).toBeVisible();
   await expect(resume.locator('img')).toHaveCount(0);
-  await expect(page.locator('[data-print]')).toBeHidden();
+  await expect(page.locator('[data-print]')).toHaveCount(0);
 });
 
 test('real AGIAS screenshots load with localized descriptions in the portfolio', async ({ page }, testInfo) => {

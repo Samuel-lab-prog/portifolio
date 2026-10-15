@@ -35,10 +35,6 @@ const projectSummaryLabel = `${labels.projectSummaryLabel} ${featuredProject.nam
         <a data-locale-link href="/" aria-current={locale === 'pt' ? 'page' : undefined} class:list={["px-2 py-1.5 font-mono text-[10px]", locale === 'pt' ? 'bg-accent text-on-accent' : 'text-muted transition-colors hover:text-ink']}>PT</a>
         <a data-locale-link href="/en/" aria-current={locale === 'en' ? 'page' : undefined} class:list={["px-2 py-1.5 font-mono text-[10px]", locale === 'en' ? 'bg-accent text-on-accent' : 'text-muted transition-colors hover:text-ink']}>EN</a>
       </div>
-      <button data-print class="inline-flex cursor-not-allowed items-center gap-2 border border-muted bg-transparent px-3 py-[9px] text-[11px] opacity-50 transition-colors max-[600px]:size-9 max-[600px]:justify-center max-[600px]:p-0" type="button" disabled>
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><path d="M6 14h12v8H6zM18 12h.01"/></svg>
-        <span class="max-[600px]:sr-only">{labels.resume}</span>
-      </button>
     </div>
   </header>
 

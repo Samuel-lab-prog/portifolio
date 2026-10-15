@@ -104,7 +104,62 @@
       },
       "stack": ["React", "TypeScript", "Vite", "Chakra UI", "TanStack Query", "Zustand", "Bun", "Elysia", "Prisma", "PostgreSQL"],
       "demoUrl": "https://hello-poetry-frontend.vercel.app/",
-      "screenshots": [],
+      "screenshots": [
+        {
+          "path": "/projects/hello-poetry/01-home-feed.png",
+          "width": 1598,
+          "height": 748,
+          "alt": {
+            "pt": "Feed do HelloPoetry com busca e poemas publicados pela comunidade.",
+            "en": "HelloPoetry feed with search and poems published by the community."
+          }
+        },
+        {
+          "path": "/projects/hello-poetry/02-poets-directory.png",
+          "width": 1605,
+          "height": 732,
+          "alt": {
+            "pt": "Página de descoberta de poetas com campo de busca e lista de autores.",
+            "en": "Poet discovery page with a search field and a list of authors."
+          }
+        },
+        {
+          "path": "/projects/hello-poetry/03-notifications.png",
+          "width": 1614,
+          "height": 739,
+          "alt": {
+            "pt": "Central de notificações do HelloPoetry com interações e solicitações de amizade.",
+            "en": "HelloPoetry notifications center showing interactions and friend requests."
+          }
+        },
+        {
+          "path": "/projects/hello-poetry/04-poem-detail.png",
+          "width": 1602,
+          "height": 736,
+          "alt": {
+            "pt": "Página de leitura de um poema com título, autoria e conteúdo em destaque.",
+            "en": "Poem reading page with the title, author, and poem text in focus."
+          }
+        },
+        {
+          "path": "/projects/hello-poetry/05-profile.png",
+          "width": 1618,
+          "height": 730,
+          "alt": {
+            "pt": "Perfil de autora com biografia e contagens de poemas, comentários e amizades.",
+            "en": "Author profile with a biography and poem, comment, and friend counts."
+          }
+        },
+        {
+          "path": "/projects/hello-poetry/06-create-poem.png",
+          "width": 1590,
+          "height": 746,
+          "alt": {
+            "pt": "Formulário para criar um poema com campos de título, resumo e conteúdo em Markdown.",
+            "en": "Poem creation form with title, summary, and Markdown content fields."
+          }
+        }
+      ],
       "highlights": {
         "pt": [
           "Fluxos de criação e leitura de poemas, comentários, perfis e coleções.",
