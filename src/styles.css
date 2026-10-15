@@ -25,6 +25,8 @@
 
 .resume-print { display: none; }
 
+[data-back-to-top][hidden] { display: none; }
+
 .hero-indicator-glow {
   box-shadow: 0 0 14px color-mix(in srgb, var(--color-accent) 54%, transparent);
 }

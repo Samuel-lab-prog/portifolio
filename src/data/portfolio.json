@@ -17,15 +17,16 @@
       "pt": "Brasil",
       "en": "Brazil"
     },
-    "email": "samuel.gomes.5762@gmail.com",
+    "email": "samuel.gomes.monni.dev@gmail.com",
+    "whatsapp": "5551991669896",
     "links": {
       "github": "https://github.com/Samuel-lab-prog",
       "linkedin": "",
       "lattes": "https://lattes.cnpq.br/0187401279570368"
     },
     "about": {
-      "pt": "Trabalho entre frontend, backend e qualidade de software, buscando soluções fáceis de entender e evoluir. Também tenho experiência em atividades de ensino de matemática e programação, criando materiais e apoiando grupos de estudo.",
-      "en": "I work across frontend, backend, and software quality, aiming for solutions that are easy to understand and evolve. I also have experience teaching mathematics and programming, creating learning materials, and supporting study groups."
+      "pt": "Trabalho entre frontend, backend e qualidade de software, buscando soluções fáceis de entender e evoluir. Também sou multimedalhista em olimpíadas científicas e tenho experiência em atividades de ensino de matemática e programação, criando materiais e apoiando grupos de estudo.",
+      "en": "I work across frontend, backend, and software quality, aiming for solutions that are easy to understand and evolve. I am also a multi-medalist in science Olympiads, with experience teaching mathematics and programming, creating learning materials, and supporting study groups."
     }
   },
   "projects": [
@@ -42,6 +43,36 @@
         "en": "An academic platform for student, teacher, and institutional workflows, connecting classes, lessons, attendance, assignments, and academic results."
       },
       "stack": ["React", "TypeScript", "Vite", "Chakra UI", "Bun", "Elysia", "Prisma", "PostgreSQL"],
+      "demoUrl": "https://agias-frontend.vercel.app/",
+      "screenshots": [
+        {
+          "path": "/projects/agias/01-attendance-roll-call.png",
+          "width": 1595,
+          "height": 673,
+          "alt": {
+            "pt": "Tela de frequência do AGIAS com resumo das marcações e chamada ainda pendente para a turma.",
+            "en": "AGIAS attendance screen with a summary of marks and a roll call still pending for the class."
+          }
+        },
+        {
+          "path": "/projects/agias/02-activity-editor.png",
+          "width": 1589,
+          "height": 685,
+          "alt": {
+            "pt": "Formulário de nova atividade do AGIAS, com campos de título, tipo e editor de orientações.",
+            "en": "AGIAS new activity form with title and type fields and an instructions editor."
+          }
+        },
+        {
+          "path": "/projects/agias/03-notifications.png",
+          "width": 1579,
+          "height": 669,
+          "alt": {
+            "pt": "Central de notificações do AGIAS com atualizações de vínculos docentes e status de leitura.",
+            "en": "AGIAS notifications center showing teacher-assignment updates and their read status."
+          }
+        }
+      ],
       "highlights": {
         "pt": [
           "Frontend organizado por funcionalidades e casos de uso, com verificações de arquitetura e contratos.",
@@ -72,6 +103,8 @@
         "en": "An application for publishing and discovering poems, finding authors, and interacting with a writing community."
       },
       "stack": ["React", "TypeScript", "Vite", "Chakra UI", "TanStack Query", "Zustand", "Bun", "Elysia", "Prisma", "PostgreSQL"],
+      "demoUrl": "https://hello-poetry-frontend.vercel.app/",
+      "screenshots": [],
       "highlights": {
         "pt": [
           "Fluxos de criação e leitura de poemas, comentários, perfis e coleções.",
@@ -102,6 +135,8 @@
         "en": "Website for Gaivota FM 98.1 in Tramandaí, Brazil, with station information, news, and access to the live stream player."
       },
       "stack": ["React", "TypeScript", "Vite", "Tailwind CSS", "React Router", "Bun", "Elysia", "Prisma", "PostgreSQL"],
+      "demoUrl": "https://radio-front-ten.vercel.app/",
+      "screenshots": [],
       "highlights": {
         "pt": [
           "Área pública com notícias e páginas institucionais, além de player persistente.",
@@ -132,6 +167,8 @@
         "en": "A monitoring prototype with a React Native app, device simulator, and an ESP32 firmware foundation with BLE communication."
       },
       "stack": ["React Native", "Expo", "TypeScript", "C++", "ESP-IDF", "Bluetooth LE", "Bun"],
+      "demoUrl": null,
+      "screenshots": [],
       "highlights": {
         "pt": [
           "Interface de telemetria para ângulo, pressão, tensão, conexão e diagnóstico.",
@@ -174,22 +211,6 @@
       },
       {
         "organization": { "pt": "IFRS — Campus Osório", "en": "IFRS — Osório Campus" },
-        "role": { "pt": "Bolsista — grupo de estudos OBMEP", "en": "Scholarship recipient — OBMEP study group" },
-        "period": "2024",
-        "periodEn": "2024",
-        "highlights": {
-          "pt": [
-            "Condução de grupo de estudos da OBMEP, com preparação de aulas e materiais de apoio.",
-            "Acompanhamento do progresso dos participantes, buscando fortalecer autonomia e desempenho."
-          ],
-          "en": [
-            "Led an OBMEP study group and prepared classes and supporting materials.",
-            "Followed participant progress to support autonomy and learning outcomes."
-          ]
-        }
-      },
-      {
-        "organization": { "pt": "IFRS — Campus Osório", "en": "IFRS — Osório Campus" },
         "role": { "pt": "Bolsista — grupo de estudos OBI", "en": "Scholarship recipient — OBI study group" },
         "period": "2025",
         "periodEn": "2025",
@@ -201,6 +222,22 @@
           "en": [
             "Coordinated an OBI study group and created a Git and GitHub course for collaborative work.",
             "Developed learning materials and supported technical programming education."
+          ]
+        }
+      },
+      {
+        "organization": { "pt": "IFRS — Campus Osório", "en": "IFRS — Osório Campus" },
+        "role": { "pt": "Bolsista — grupo de estudos OBMEP", "en": "Scholarship recipient — OBMEP study group" },
+        "period": "2024",
+        "periodEn": "2024",
+        "highlights": {
+          "pt": [
+            "Condução de grupo de estudos da OBMEP, com preparação de aulas e materiais de apoio.",
+            "Acompanhamento do progresso dos participantes, buscando fortalecer autonomia e desempenho."
+          ],
+          "en": [
+            "Led an OBMEP study group and prepared classes and supporting materials.",
+            "Followed participant progress to support autonomy and learning outcomes."
           ]
         }
       }
@@ -219,6 +256,22 @@
       "navExperience": "Experiência",
       "navContact": "Contato",
       "resume": "Imprimir currículo",
+      "backToTop": "Voltar ao topo",
+      "navigationLabel": "Navegação principal",
+      "languageLabel": "Idioma",
+      "homeLabel": "Portfólio — início",
+      "projectSummaryLabel": "Resumo visual do projeto",
+      "projectTechnologyLabel": "Tecnologias do projeto",
+      "resumeSummarySection": "Resumo",
+      "top": "Topo",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "lattes": "Lattes",
+      "heroYear": "2026",
+      "projectCode": "PROJECT",
+      "projectTypeCode": "FULL_STACK",
+      "projectStackCode": "STACK",
+      "projectFooter": "BUILDING WITH CARE",
       "heroEyebrow": "Portfólio de programação",
       "scroll": "Role para explorar",
       "projectsEyebrow": "Trabalho selecionado",
@@ -232,6 +285,8 @@
       "contactTitle": "Vamos conversar?",
       "contactBody": "Estou aberto a trocar ideias, colaborar em projetos e aprender com novas oportunidades.",
       "contactButton": "Entre em contato",
+      "whatsappButton": "Conversar pelo WhatsApp",
+      "whatsappMessage": "Olá, Samuel! Encontrei seu portfólio e gostaria de conversar.",
       "footer": "Feito com intenção, código e café.",
       "resumeTitle": "Currículo",
       "location": "Localização",
@@ -242,7 +297,17 @@
       "languages": "Idiomas",
       "skills": "Tecnologias",
       "viewProject": "Ver projeto",
-      "viewCode": "Código-fonte"
+      "viewCode": "Código-fonte",
+      "visitDemo": "Visitar aplicação",
+      "projectRepositories": "Repositórios do projeto",
+      "projectScreenshots": "Capturas de tela do projeto",
+      "carouselRoleDescription": "carrossel",
+      "slideRoleDescription": "slide",
+      "carouselKeyboardHint": "Use as setas esquerda e direita para navegar pelas imagens.",
+      "previousScreenshot": "Captura anterior",
+      "nextScreenshot": "Próxima captura",
+      "goToScreenshot": "Ir para a captura",
+      "screenshotOf": "de"
     },
     "en": {
       "navProjects": "Projects",
@@ -251,6 +316,22 @@
       "navExperience": "Experience",
       "navContact": "Contact",
       "resume": "Print résumé",
+      "backToTop": "Back to top",
+      "navigationLabel": "Main navigation",
+      "languageLabel": "Language",
+      "homeLabel": "Portfolio — home",
+      "projectSummaryLabel": "Visual summary of",
+      "projectTechnologyLabel": "Project technologies",
+      "resumeSummarySection": "Profile",
+      "top": "Top",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "lattes": "Lattes",
+      "heroYear": "2026",
+      "projectCode": "PROJECT",
+      "projectTypeCode": "FULL_STACK",
+      "projectStackCode": "STACK",
+      "projectFooter": "BUILDING WITH CARE",
       "heroEyebrow": "Programming portfolio",
       "scroll": "Scroll to explore",
       "projectsEyebrow": "Selected work",
@@ -264,6 +345,8 @@
       "contactTitle": "Let's talk.",
       "contactBody": "Open to exchanging ideas, collaborating on projects, and learning through new opportunities.",
       "contactButton": "Get in touch",
+      "whatsappButton": "Message me on WhatsApp",
+      "whatsappMessage": "Hi, Samuel! I found your portfolio and would like to get in touch.",
       "footer": "Made with intention, code, and coffee.",
       "resumeTitle": "Résumé",
       "location": "Location",
@@ -274,7 +357,17 @@
       "languages": "Languages",
       "skills": "Technologies",
       "viewProject": "View project",
-      "viewCode": "Source code"
+      "viewCode": "Source code",
+      "visitDemo": "Visit application",
+      "projectRepositories": "Project repositories",
+      "projectScreenshots": "Project screenshots",
+      "carouselRoleDescription": "carousel",
+      "slideRoleDescription": "slide",
+      "carouselKeyboardHint": "Use the left and right arrow keys to browse images.",
+      "previousScreenshot": "Previous screenshot",
+      "nextScreenshot": "Next screenshot",
+      "goToScreenshot": "Go to screenshot",
+      "screenshotOf": "of"
     }
   }
 }

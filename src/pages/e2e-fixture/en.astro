@@ -1,0 +1,10 @@
+---
+import E2ECarouselFixture from '../../components/E2ECarouselFixture.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+{import.meta.env.DEV ? (
+  <BaseLayout locale="en" title="Carousel E2E fixture" description="Temporary carousel test fixture">
+    <E2ECarouselFixture locale="en" />
+  </BaseLayout>
+) : <main>Not found</main>}

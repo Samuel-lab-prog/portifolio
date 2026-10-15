@@ -1,0 +1,213 @@
+---
+import { getProjectMediaMode, type ProjectScreenshot } from '../data/project-media';
+
+type Locale = 'pt' | 'en';
+
+interface Props {
+  screenshots: ProjectScreenshot[];
+  locale: Locale;
+  projectName: string;
+  labels: {
+    projectScreenshots: string;
+    carouselRoleDescription: string;
+    slideRoleDescription: string;
+    carouselKeyboardHint: string;
+    previousScreenshot: string;
+    nextScreenshot: string;
+    goToScreenshot: string;
+    screenshotOf: string;
+  };
+}
+
+const { screenshots, locale, projectName, labels } = Astro.props;
+const mode = getProjectMediaMode(screenshots);
+const carouselId = `screenshots-${projectName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+const trackId = `${carouselId}-track`;
+const position = (index: number) => `${index + 1} ${labels.screenshotOf} ${screenshots.length}`;
+---
+
+{mode !== 'none' && (
+  <div class="border-b border-line bg-page/40 px-[22px] py-5 max-[600px]:px-[15px]">
+    {mode === 'single' ? (
+      <figure class="m-0 overflow-hidden border border-line bg-panel">
+        <img
+                class="block aspect-video w-full bg-panel object-contain"
+          src={screenshots[0].path}
+          width={screenshots[0].width}
+          height={screenshots[0].height}
+          alt={screenshots[0].alt[locale]}
+          loading="lazy"
+          decoding="async"
+        />
+      </figure>
+    ) : (
+      <section
+        class="min-w-0"
+        data-carousel
+        aria-label={`${labels.projectScreenshots}: ${projectName}`}
+        aria-roledescription={labels.carouselRoleDescription}
+      >
+        <div
+          class="flex snap-x snap-mandatory overflow-x-auto overscroll-x-contain border border-line bg-panel [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          id={trackId}
+          data-carousel-track
+          tabindex="0"
+          role="group"
+          aria-label={labels.carouselKeyboardHint}
+        >
+          {screenshots.map((screenshot, index) => (
+            <figure
+              class="m-0 w-full shrink-0 snap-start snap-always"
+              data-carousel-slide
+              role="group"
+              aria-roledescription={labels.slideRoleDescription}
+              aria-label={position(index)}
+            >
+              <img
+                class="block aspect-video w-full bg-panel object-contain"
+                src={screenshot.path}
+                width={screenshot.width}
+                height={screenshot.height}
+                alt={screenshot.alt[locale]}
+                loading="lazy"
+                decoding="async"
+              />
+            </figure>
+          ))}
+        </div>
+        <div class="mt-3 flex items-center justify-between gap-3">
+          <button
+            class="grid size-9 shrink-0 place-items-center border border-line text-copy transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:cursor-not-allowed disabled:opacity-40"
+            type="button"
+            data-carousel-previous
+            aria-label={labels.previousScreenshot}
+            aria-controls={trackId}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m15 18-6-6 6-6"/><path d="M20 12H9"/></svg>
+          </button>
+          <div class="flex items-center justify-center gap-2" role="group" aria-label={labels.projectScreenshots}>
+            {screenshots.map((_, index) => (
+              <button
+                class="size-3 rounded-full border border-muted transition-colors hover:border-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent aria-[current=true]:border-accent aria-[current=true]:bg-accent"
+                type="button"
+                data-carousel-indicator
+                data-slide-index={index}
+                aria-label={`${labels.goToScreenshot} ${position(index)}`}
+                aria-controls={trackId}
+                aria-current={index === 0 ? 'true' : undefined}
+              >
+                <span class="sr-only">{`${labels.goToScreenshot} ${position(index)}`}</span>
+              </button>
+            ))}
+          </div>
+          <button
+            class="grid size-9 shrink-0 place-items-center border border-line text-copy transition-colors hover:border-accent hover:text-accent focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent disabled:cursor-not-allowed disabled:opacity-40"
+            type="button"
+            data-carousel-next
+            aria-label={labels.nextScreenshot}
+            aria-controls={trackId}
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m9 18 6-6-6-6"/><path d="M4 12h11"/></svg>
+          </button>
+          <output class="sr-only" data-carousel-status aria-live="polite">{position(0)}</output>
+        </div>
+      </section>
+    )}
+  </div>
+)}
+
+{mode === 'carousel' && (
+  <script>
+    const carousels = document.querySelectorAll<HTMLElement>('[data-carousel]');
+
+    carousels.forEach((carousel) => {
+      const track = carousel.querySelector<HTMLElement>('[data-carousel-track]');
+      const slides = Array.from(carousel.querySelectorAll<HTMLElement>('[data-carousel-slide]'));
+      const indicators = Array.from(carousel.querySelectorAll<HTMLButtonElement>('[data-carousel-indicator]'));
+      const previous = carousel.querySelector<HTMLButtonElement>('[data-carousel-previous]');
+      const next = carousel.querySelector<HTMLButtonElement>('[data-carousel-next]');
+      const status = carousel.querySelector<HTMLOutputElement>('[data-carousel-status]');
+
+      if (!track || slides.length < 2 || !previous || !next) return;
+
+      let activeIndex = 0;
+      let animationFrame = 0;
+
+      const setActiveIndex = (index: number) => {
+        activeIndex = Math.max(0, Math.min(index, slides.length - 1));
+        previous.disabled = activeIndex === 0;
+        next.disabled = activeIndex === slides.length - 1;
+
+        indicators.forEach((indicator, indicatorIndex) => {
+          if (indicatorIndex === activeIndex) {
+            indicator.setAttribute('aria-current', 'true');
+          } else {
+            indicator.removeAttribute('aria-current');
+          }
+        });
+
+        if (status) status.textContent = slides[activeIndex].getAttribute('aria-label') ?? '';
+      };
+
+      const goTo = (index: number) => {
+        const slide = slides[Math.max(0, Math.min(index, slides.length - 1))];
+        const left = slide.getBoundingClientRect().left - track.getBoundingClientRect().left + track.scrollLeft;
+        track.scrollTo({
+          left,
+          behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth',
+        });
+        setActiveIndex(index);
+      };
+
+      const syncActiveSlide = () => {
+        animationFrame = 0;
+        const trackCenter = track.getBoundingClientRect().left + track.clientWidth / 2;
+        let nearestIndex = 0;
+        let nearestDistance = Number.POSITIVE_INFINITY;
+
+        slides.forEach((slide, index) => {
+          const slideCenter = slide.getBoundingClientRect().left + slide.clientWidth / 2;
+          const distance = Math.abs(trackCenter - slideCenter);
+          if (distance < nearestDistance) {
+            nearestDistance = distance;
+            nearestIndex = index;
+          }
+        });
+
+        setActiveIndex(nearestIndex);
+      };
+
+      track.addEventListener('scroll', () => {
+        if (animationFrame === 0) animationFrame = window.requestAnimationFrame(syncActiveSlide);
+      }, { passive: true });
+
+      track.addEventListener('keydown', (event) => {
+        if (event.target !== track) return;
+        if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          goTo(activeIndex - 1);
+        } else if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          goTo(activeIndex + 1);
+        } else if (event.key === 'Home') {
+          event.preventDefault();
+          goTo(0);
+        } else if (event.key === 'End') {
+          event.preventDefault();
+          goTo(slides.length - 1);
+        }
+      });
+
+      previous.addEventListener('click', () => goTo(activeIndex - 1));
+      next.addEventListener('click', () => goTo(activeIndex + 1));
+      indicators.forEach((indicator) => {
+        indicator.addEventListener('click', () => {
+          const index = Number(indicator.dataset.slideIndex);
+          if (Number.isInteger(index)) goTo(index);
+        });
+      });
+
+      setActiveIndex(0);
+    });
+  </script>
+)}

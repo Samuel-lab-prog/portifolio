@@ -1,5 +1,6 @@
 ---
 import '../styles.css';
+import content from '../data/portfolio.json';
 
 interface Props {
   locale: 'pt' | 'en';
@@ -8,6 +9,7 @@ interface Props {
 }
 
 const { locale, title, description } = Astro.props;
+const profile = content.profile;
 const siteUrl = Astro.site?.toString().replace(/\/$/, '');
 const currentPath = locale === 'pt' ? '/' : '/en/';
 const canonical = siteUrl ? new URL(currentPath, `${siteUrl}/`).toString() : undefined;
@@ -16,20 +18,17 @@ const englishUrl = siteUrl ? new URL('/en/', `${siteUrl}/`).toString() : undefin
 const person = {
   '@context': 'https://schema.org',
   '@type': 'Person',
-  name: 'Samuel Gomes Monni',
-  jobTitle: locale === 'pt' ? 'Desenvolvedor full-stack' : 'Full-stack developer',
+  name: profile.name,
+  jobTitle: profile.role[locale],
   ...(Astro.site ? { url: new URL('/', Astro.site).toString() } : {}),
-  email: 'samuel.gomes.5762@gmail.com',
-  sameAs: [
-    'https://github.com/Samuel-lab-prog',
-    'https://lattes.cnpq.br/0187401279570368',
-  ],
+  ...(profile.email ? { email: profile.email } : {}),
+  sameAs: Object.values(profile.links).filter(Boolean),
 };
 const website = Astro.site
   ? {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
-      name: 'Samuel Gomes Monni — Portfolio',
+      name: profile.name,
       url: new URL('/', Astro.site).toString(),
       inLanguage: locale === 'pt' ? 'pt-BR' : 'en',
     }
@@ -43,6 +42,7 @@ const jsonLd = JSON.stringify(website ? [person, website] : person).replace(/</g
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#0B1220" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="description" content={description} />
     <title>{title}</title>
     {canonical && <link rel="canonical" href={canonical} />}
@@ -50,7 +50,7 @@ const jsonLd = JSON.stringify(website ? [person, website] : person).replace(/</g
     {englishUrl && <link rel="alternate" hreflang="en" href={englishUrl} />}
     {portugueseUrl && <link rel="alternate" hreflang="x-default" href={portugueseUrl} />}
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Samuel Gomes Monni" />
+    <meta property="og:site_name" content={profile.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content={locale === 'pt' ? 'pt_BR' : 'en_US'} />
