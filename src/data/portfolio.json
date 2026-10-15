@@ -136,7 +136,44 @@
       },
       "stack": ["React", "TypeScript", "Vite", "Tailwind CSS", "React Router", "Bun", "Elysia", "Prisma", "PostgreSQL"],
       "demoUrl": "https://radio-front-ten.vercel.app/",
-      "screenshots": [],
+      "screenshots": [
+        {
+          "path": "/projects/gaivota-fm/01-radio-home.png",
+          "width": 1590,
+          "height": 741,
+          "alt": {
+            "pt": "Página inicial da Gaivota FM com navegação, chamada para ouvir a rádio e player ao vivo.",
+            "en": "Gaivota FM home page with navigation, a listen-live call to action, and an audio player."
+          }
+        },
+        {
+          "path": "/projects/gaivota-fm/02-programming-coming-soon.png",
+          "width": 1594,
+          "height": 743,
+          "alt": {
+            "pt": "Página da agenda da Gaivota FM informando que a programação está em preparação.",
+            "en": "Gaivota FM schedule page stating that the programming guide is being prepared."
+          }
+        },
+        {
+          "path": "/projects/gaivota-fm/03-latest-news.png",
+          "width": 1601,
+          "height": 744,
+          "alt": {
+            "pt": "Seção de últimas notícias da Gaivota FM com três cards de publicações.",
+            "en": "Gaivota FM latest-news section with three publication cards."
+          }
+        },
+        {
+          "path": "/projects/gaivota-fm/04-news-editor.png",
+          "width": 1599,
+          "height": 745,
+          "alt": {
+            "pt": "Painel editorial da Gaivota FM no formulário de criação de notícia.",
+            "en": "Gaivota FM editorial dashboard showing the news creation form."
+          }
+        }
+      ],
       "highlights": {
         "pt": [
           "Área pública com notícias e páginas institucionais, além de player persistente.",
