@@ -1,0 +1,13 @@
+---
+import PortfolioPage from '../components/PortfolioPage.astro';
+import content from '../data/portfolio.json';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const locale = 'pt';
+const title = `${content.profile.name} — ${content.profile.role[locale]}`;
+const description = content.profile.intro[locale];
+---
+
+<BaseLayout locale={locale} title={title} description={description}>
+  <PortfolioPage locale={locale} />
+</BaseLayout>

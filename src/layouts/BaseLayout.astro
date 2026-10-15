@@ -1,0 +1,72 @@
+---
+import '../styles.css';
+
+interface Props {
+  locale: 'pt' | 'en';
+  title: string;
+  description: string;
+}
+
+const { locale, title, description } = Astro.props;
+const siteUrl = Astro.site?.toString().replace(/\/$/, '');
+const currentPath = locale === 'pt' ? '/' : '/en/';
+const canonical = siteUrl ? new URL(currentPath, `${siteUrl}/`).toString() : undefined;
+const portugueseUrl = siteUrl ? new URL('/', `${siteUrl}/`).toString() : undefined;
+const englishUrl = siteUrl ? new URL('/en/', `${siteUrl}/`).toString() : undefined;
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Samuel Gomes Monni',
+  jobTitle: locale === 'pt' ? 'Desenvolvedor full-stack' : 'Full-stack developer',
+  ...(Astro.site ? { url: new URL('/', Astro.site).toString() } : {}),
+  email: 'samuel.gomes.5762@gmail.com',
+  sameAs: [
+    'https://github.com/Samuel-lab-prog',
+    'https://lattes.cnpq.br/0187401279570368',
+  ],
+};
+const website = Astro.site
+  ? {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'Samuel Gomes Monni — Portfolio',
+      url: new URL('/', Astro.site).toString(),
+      inLanguage: locale === 'pt' ? 'pt-BR' : 'en',
+    }
+  : undefined;
+const jsonLd = JSON.stringify(website ? [person, website] : person).replace(/</g, '\\u003c');
+---
+
+<!doctype html>
+<html lang={locale === 'pt' ? 'pt-BR' : 'en'}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0B1220" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    {canonical && <link rel="canonical" href={canonical} />}
+    {portugueseUrl && <link rel="alternate" hreflang="pt-BR" href={portugueseUrl} />}
+    {englishUrl && <link rel="alternate" hreflang="en" href={englishUrl} />}
+    {portugueseUrl && <link rel="alternate" hreflang="x-default" href={portugueseUrl} />}
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Samuel Gomes Monni" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content={locale === 'pt' ? 'pt_BR' : 'en_US'} />
+    {canonical && <meta property="og:url" content={canonical} />}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script type="application/ld+json" set:html={jsonLd} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

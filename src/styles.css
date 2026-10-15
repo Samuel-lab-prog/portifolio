@@ -1,0 +1,52 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-page: #0B1220;
+  --color-panel: #111B2E;
+  --color-ink: #F1F5F9;
+  --color-copy: #C4D0E0;
+  --color-muted: #94A3B8;
+  --color-line: #27364B;
+  --color-accent: #3B82F6;
+  --color-on-accent: #07111F;
+  --font-sans: 'DM Sans', sans-serif;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+}
+
+@layer base {
+  * { @apply box-border; }
+  html { @apply scroll-smooth; }
+  body { @apply m-0 min-w-0 bg-page font-sans text-ink antialiased; }
+  button, a { @apply font-sans; }
+  ::selection { @apply bg-accent text-on-accent; }
+  :focus-visible { @apply outline-2 outline-offset-4 outline-accent; }
+}
+
+.resume-print { display: none; }
+
+.hero-indicator-glow {
+  box-shadow: 0 0 14px color-mix(in srgb, var(--color-accent) 54%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+@media print {
+  @page { size: A4; margin: 17mm; }
+  :root, body { color: #161914; background: #fff; }
+  .site-shell { display: none !important; }
+  .resume-print { display: block !important; color: #161914; font: 10.5pt/1.5 Arial, sans-serif; }
+  .resume-header { display: flex; justify-content: space-between; align-items: start; padding-bottom: 18px; border-bottom: 2px solid #222; }
+  .resume-kicker { margin: 0 0 7px; color: var(--color-accent); font: 8pt 'Courier New', monospace; letter-spacing: .12em; }
+  .resume-header h1 { margin: 0; font: bold 25pt Arial, sans-serif; }
+  .resume-header p { margin: 5px 0 0; }
+  .resume-date { color: #555; font-size: 8pt; }
+  .resume-print section { margin-top: 20px; break-inside: avoid; }
+  .resume-print h2 { margin: 0 0 7px; padding-bottom: 4px; border-bottom: 1px solid #aaa; font: bold 11pt Arial, sans-serif; text-transform: uppercase; }
+  .resume-print h3 { margin: 8px 0 4px; font-size: 10pt; }
+  .resume-print p { margin: 5px 0; }
+  .resume-print ul { margin: 7px 0; padding-left: 18px; }
+  .resume-print li { margin: 4px 0; }
+}

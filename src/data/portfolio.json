@@ -1,0 +1,280 @@
+{
+  "profile": {
+    "name": "Samuel Gomes Monni",
+    "role": {
+      "pt": "Desenvolvedor full-stack",
+      "en": "Full-stack developer"
+    },
+    "headline": {
+      "pt": "Código claro para problemas reais.",
+      "en": "Clear code for real-world problems."
+    },
+    "intro": {
+      "pt": "Desenvolvedor full-stack com foco em arquitetura clara, implementação confiável e entregas consistentes.",
+      "en": "Full-stack developer focused on clear architecture, reliable implementation, and consistent delivery."
+    },
+    "location": {
+      "pt": "Brasil",
+      "en": "Brazil"
+    },
+    "email": "samuel.gomes.5762@gmail.com",
+    "links": {
+      "github": "https://github.com/Samuel-lab-prog",
+      "linkedin": "",
+      "lattes": "https://lattes.cnpq.br/0187401279570368"
+    },
+    "about": {
+      "pt": "Trabalho entre frontend, backend e qualidade de software, buscando soluções fáceis de entender e evoluir. Também tenho experiência em atividades de ensino de matemática e programação, criando materiais e apoiando grupos de estudo.",
+      "en": "I work across frontend, backend, and software quality, aiming for solutions that are easy to understand and evolve. I also have experience teaching mathematics and programming, creating learning materials, and supporting study groups."
+    }
+  },
+  "projects": [
+    {
+      "id": "agias",
+      "featured": true,
+      "name": "AGIAS",
+      "kind": {
+        "pt": "Plataforma acadêmica · Full-stack",
+        "en": "Academic platform · Full-stack"
+      },
+      "summary": {
+        "pt": "Plataforma acadêmica para organizar rotinas de estudantes, professores e equipes institucionais, conectando turmas, aulas, frequência, atividades e resultados.",
+        "en": "An academic platform for student, teacher, and institutional workflows, connecting classes, lessons, attendance, assignments, and academic results."
+      },
+      "stack": ["React", "TypeScript", "Vite", "Chakra UI", "Bun", "Elysia", "Prisma", "PostgreSQL"],
+      "highlights": {
+        "pt": [
+          "Frontend organizado por funcionalidades e casos de uso, com verificações de arquitetura e contratos.",
+          "Backend em monólito modular, com domínios acadêmicos e separação entre comandos e consultas.",
+          "Fluxos de frequência, resultados e trabalho docente acompanhados por testes automatizados."
+        ],
+        "en": [
+          "Feature- and use-case-oriented frontend with architecture and contract checks.",
+          "Modular-monolith backend with academic domains and separate command and query flows.",
+          "Attendance, results, and teacher workflows supported by automated tests."
+        ]
+      },
+      "repositories": [
+        { "label": "Frontend", "url": "https://github.com/Samuel-lab-prog/agias-frontend" },
+        { "label": "Backend", "url": "https://github.com/Samuel-lab-prog/sipac-backend" }
+      ]
+    },
+    {
+      "id": "hello-poetry",
+      "featured": false,
+      "name": "HelloPoetry",
+      "kind": {
+        "pt": "Rede social de poesia · Full-stack",
+        "en": "Poetry social network · Full-stack"
+      },
+      "summary": {
+        "pt": "Aplicação para publicar e descobrir poemas, conhecer autores e interagir com uma comunidade de escrita.",
+        "en": "An application for publishing and discovering poems, finding authors, and interacting with a writing community."
+      },
+      "stack": ["React", "TypeScript", "Vite", "Chakra UI", "TanStack Query", "Zustand", "Bun", "Elysia", "Prisma", "PostgreSQL"],
+      "highlights": {
+        "pt": [
+          "Fluxos de criação e leitura de poemas, comentários, perfis e coleções.",
+          "Feed, interações sociais, amizades, notificações e moderação.",
+          "Frontend e API separados, com organização por funcionalidades e domínios."
+        ],
+        "en": [
+          "Poem creation and reading, comments, profiles, and collections.",
+          "Feed, social interactions, friendships, notifications, and moderation.",
+          "Separate frontend and API, organized by features and domains."
+        ]
+      },
+      "repositories": [
+        { "label": "Frontend", "url": "https://github.com/Samuel-lab-prog/helloPoetryFrontend" },
+        { "label": "Backend", "url": "https://github.com/Samuel-lab-prog/helloPoetryBackend" }
+      ]
+    },
+    {
+      "id": "gaivota-fm",
+      "featured": false,
+      "name": "Gaivota FM",
+      "kind": {
+        "pt": "Site institucional e painel editorial",
+        "en": "Station website and editorial dashboard"
+      },
+      "summary": {
+        "pt": "Site da Gaivota FM 98.1, de Tramandaí/RS, com apresentação da rádio, notícias e acesso ao player da transmissão ao vivo.",
+        "en": "Website for Gaivota FM 98.1 in Tramandaí, Brazil, with station information, news, and access to the live stream player."
+      },
+      "stack": ["React", "TypeScript", "Vite", "Tailwind CSS", "React Router", "Bun", "Elysia", "Prisma", "PostgreSQL"],
+      "highlights": {
+        "pt": [
+          "Área pública com notícias e páginas institucionais, além de player persistente.",
+          "Painel administrativo para criar, revisar, publicar e organizar notícias.",
+          "Layout responsivo; a agenda está identificada no projeto como em implementação."
+        ],
+        "en": [
+          "Public news and station pages, plus a persistent audio player.",
+          "Admin dashboard to create, review, publish, and organize news.",
+          "Responsive layout; the agenda is currently marked as in progress."
+        ]
+      },
+      "repositories": [
+        { "label": "Frontend", "url": "https://github.com/Samuel-lab-prog/radio-front" },
+        { "label": "Backend", "url": "https://github.com/Samuel-lab-prog/radio-back" }
+      ]
+    },
+    {
+      "id": "rocket-controller",
+      "featured": false,
+      "name": "Rocket Controller",
+      "kind": {
+        "pt": "Aplicativo mobile e firmware experimental",
+        "en": "Mobile app and experimental firmware"
+      },
+      "summary": {
+        "pt": "Protótipo de monitoramento com aplicativo React Native, simulador de dispositivo e uma fundação de firmware ESP32 com comunicação BLE.",
+        "en": "A monitoring prototype with a React Native app, device simulator, and an ESP32 firmware foundation with BLE communication."
+      },
+      "stack": ["React Native", "Expo", "TypeScript", "C++", "ESP-IDF", "Bluetooth LE", "Bun"],
+      "highlights": {
+        "pt": [
+          "Interface de telemetria para ângulo, pressão, tensão, conexão e diagnóstico.",
+          "Protocolo BLE versionado e codecs TypeScript/C++ com testes compartilhados.",
+          "O simulador demonstra os fluxos; a comunicação com placa física ainda precisa de validação em hardware."
+        ],
+        "en": [
+          "Telemetry UI for angle, pressure, voltage, connection, and diagnostics.",
+          "Versioned BLE protocol and TypeScript/C++ codecs with shared test vectors.",
+          "The simulator demonstrates the workflows; communication with a physical board still needs hardware validation."
+        ]
+      },
+      "repositories": [
+        { "label": "Código-fonte", "url": "https://github.com/Samuel-lab-prog/rocket-controller" }
+      ]
+    }
+  ],
+  "resume": {
+    "summary": {
+      "pt": "Desenvolvedor full-stack com foco em arquitetura clara, implementação confiável e entregas consistentes. Experiência com aplicações web, organização de código e automação de qualidade.",
+      "en": "Full-stack developer focused on clear architecture, reliable implementation, and consistent delivery. Experienced in web applications, code organization, and quality automation."
+    },
+    "education": [],
+    "experience": [
+      {
+        "organization": { "pt": "Freelancer", "en": "Freelance" },
+        "role": { "pt": "Desenvolvedor de software", "en": "Software developer" },
+        "period": "2026 — atual",
+        "periodEn": "2026 — present",
+        "highlights": {
+          "pt": [
+            "Desenvolvimento de aplicações web sob medida, com decisões técnicas pragmáticas e código organizado para facilitar a evolução.",
+            "Estruturação de funcionalidades, componentes e integrações com foco em manutenção, clareza e entrega contínua."
+          ],
+          "en": [
+            "Delivered custom web applications with pragmatic technical choices and code organized for evolution.",
+            "Structured features, components, and integrations with a focus on maintainability, clarity, and continuous delivery."
+          ]
+        }
+      },
+      {
+        "organization": { "pt": "IFRS — Campus Osório", "en": "IFRS — Osório Campus" },
+        "role": { "pt": "Bolsista — grupo de estudos OBMEP", "en": "Scholarship recipient — OBMEP study group" },
+        "period": "2024",
+        "periodEn": "2024",
+        "highlights": {
+          "pt": [
+            "Condução de grupo de estudos da OBMEP, com preparação de aulas e materiais de apoio.",
+            "Acompanhamento do progresso dos participantes, buscando fortalecer autonomia e desempenho."
+          ],
+          "en": [
+            "Led an OBMEP study group and prepared classes and supporting materials.",
+            "Followed participant progress to support autonomy and learning outcomes."
+          ]
+        }
+      },
+      {
+        "organization": { "pt": "IFRS — Campus Osório", "en": "IFRS — Osório Campus" },
+        "role": { "pt": "Bolsista — grupo de estudos OBI", "en": "Scholarship recipient — OBI study group" },
+        "period": "2025",
+        "periodEn": "2025",
+        "highlights": {
+          "pt": [
+            "Coordenação de grupo de estudos da OBI e criação de curso de Git e GitHub para trabalho colaborativo.",
+            "Desenvolvimento de materiais didáticos e apoio à formação técnica em programação."
+          ],
+          "en": [
+            "Coordinated an OBI study group and created a Git and GitHub course for collaborative work.",
+            "Developed learning materials and supported technical programming education."
+          ]
+        }
+      }
+    ],
+    "languages": [
+      { "name": { "pt": "Português", "en": "Portuguese" }, "level": { "pt": "Nativo / fluente", "en": "Native / fluent" } },
+      { "name": { "pt": "Inglês", "en": "English" }, "level": { "pt": "Intermediário — leitura, escrita e compreensão", "en": "Intermediate — reading, writing, and comprehension" } }
+    ],
+    "skills": ["React", "HTML", "CSS", "JavaScript", "TypeScript", "Sass/SCSS", "Tailwind CSS", "Next.js", "Vite", "Node.js", "Express", "Elysia", "Bun", "Java", "SQL", "PostgreSQL", "Prisma", "Git", "GitHub", "Figma", "UX", "Excel", "Canva", "PowerPoint"]
+  },
+  "labels": {
+    "pt": {
+      "navProjects": "Projetos",
+      "navAbout": "Sobre",
+      "navStack": "Tecnologias",
+      "navExperience": "Experiência",
+      "navContact": "Contato",
+      "resume": "Imprimir currículo",
+      "heroEyebrow": "Portfólio de programação",
+      "scroll": "Role para explorar",
+      "projectsEyebrow": "Trabalho selecionado",
+      "projectsTitle": "Projetos com propósito.",
+      "featured": "Projeto em destaque",
+      "aboutEyebrow": "Um pouco sobre mim",
+      "aboutTitle": "Curiosidade em movimento.",
+      "stackEyebrow": "Ferramentas em uso",
+      "stackTitle": "Tecnologias aplicadas",
+      "contactEyebrow": "Próximo passo",
+      "contactTitle": "Vamos conversar?",
+      "contactBody": "Estou aberto a trocar ideias, colaborar em projetos e aprender com novas oportunidades.",
+      "contactButton": "Entre em contato",
+      "footer": "Feito com intenção, código e café.",
+      "resumeTitle": "Currículo",
+      "location": "Localização",
+      "education": "Formação",
+      "experience": "Experiência e projetos",
+      "professionalExperience": "Experiência profissional",
+      "resumeProjects": "Projetos relevantes",
+      "languages": "Idiomas",
+      "skills": "Tecnologias",
+      "viewProject": "Ver projeto",
+      "viewCode": "Código-fonte"
+    },
+    "en": {
+      "navProjects": "Projects",
+      "navAbout": "About",
+      "navStack": "Tech stack",
+      "navExperience": "Experience",
+      "navContact": "Contact",
+      "resume": "Print résumé",
+      "heroEyebrow": "Programming portfolio",
+      "scroll": "Scroll to explore",
+      "projectsEyebrow": "Selected work",
+      "projectsTitle": "Projects with purpose.",
+      "featured": "Featured project",
+      "aboutEyebrow": "A little about me",
+      "aboutTitle": "Curiosity in motion.",
+      "stackEyebrow": "Tools in use",
+      "stackTitle": "Technologies applied",
+      "contactEyebrow": "Next step",
+      "contactTitle": "Let's talk.",
+      "contactBody": "Open to exchanging ideas, collaborating on projects, and learning through new opportunities.",
+      "contactButton": "Get in touch",
+      "footer": "Made with intention, code, and coffee.",
+      "resumeTitle": "Résumé",
+      "location": "Location",
+      "education": "Education",
+      "experience": "Experience & projects",
+      "professionalExperience": "Professional experience",
+      "resumeProjects": "Selected projects",
+      "languages": "Languages",
+      "skills": "Technologies",
+      "viewProject": "View project",
+      "viewCode": "Source code"
+    }
+  }
+}
